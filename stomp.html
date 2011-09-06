@@ -1,19 +1,17 @@
 <html>
   <head>
     <title>WebSocket example: Stomp Proxy</title>
-    <script type="text/javascript" src="https://raw.github.com/jmesnil/stomp-websocket/master/src/stomp.js"> </script>
-<!--    <script type="text/javascript" src="https://raw.github.com/jmesnil/stomp-websocket/e94312b591cfd0df1524b7447b6f39fad35d3f21/src/stomp.js"></script> -->
+    <!-- <script type="text/javascript" src="https://raw.github.com/jmesnil/stomp-websocket/master/src/stomp.js"> -->
+    <!-- <script type="text/javascript" src="https://raw.github.com/jmesnil/stomp-websocket/e94312b591cfd0df1524b7447b6f39fad35d3f21/src/stomp.js"></script> -->
+    <script type="text/javascript" src="https://raw.github.com/iuridiniz/stomp-websocket/master/src/stomp.js"></script>
     <script type="text/javascript">
         var url = "ws://localhost:9091/stomp";
         var login = "test";
         var passcode = "testpass";
         var client = Stomp.client(url);
         
-        var headers = {ack: 'client', 'selector': "location = 'Europe'"};
-
         msg_callback = function(message) {
             // called when the client receives a Stomp message from the server
-            console.log(message);
             if (message.body) {
                 var target = document.getElementById("received");
                 target.value = target.value + message.body;
@@ -26,12 +24,13 @@
         // called back after the client is connected and authenticated to the Stomp server
             console.log("Connected");
             id = client.subscribe("/queue/test", msg_callback);
-            console.log(id);
         };
 
         client.debug = function (str) {
             //console.log(str);
         }
+
+        client.onreceive = msg_callback;
 
         error_callback = function(error) {
         // display the error's message header:
