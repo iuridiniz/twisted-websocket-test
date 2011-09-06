@@ -4,16 +4,6 @@ from twisted.internet import reactor
 from twisted.protocols.portforward import ProxyFactory
 from websocket import WebSocketProtocol, WebSocketFactory
 
-
-#class Client(ProxyClient):
-#    pass
-#
-#class ClientFactory(ProxyClientFactory):
-#    protocol = Client
-#
-#class Server(ProxyServer):
-#    clientProtocolFactory = ClientFactory
-
 def main():
     log.startLogging(sys.stdout)
 
