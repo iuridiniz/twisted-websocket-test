@@ -1,5 +1,5 @@
 # Copyright (c) 2011 Oregon State University
-
+# GOT FROM: http://paste.pocoo.org/show/451569/
 """
 Blind reimplementation of WebSockets as a standalone wrapper for Twisted
 protocols.
