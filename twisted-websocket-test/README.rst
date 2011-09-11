@@ -2,7 +2,17 @@
 Test WebSocket using twisted
 ============================
 
-Requirements:
+This project tests a websocket server implementation using twisted
+
+Keywords:
+
+* Javascript
+* WebSocket
+* Python
+* Twisted
+* Stomp
+
+**Requirements:**
 
 * python
 * twisted
@@ -63,3 +73,8 @@ How to use:
         $ xdg-open ./echo.html
 
 
+websocket.py
+------------
+Blind (re)implementation of WebSockets as a standalone wrapper for Twisted
+protocols.
+Got from: http://paste.pocoo.org/show/451569/
