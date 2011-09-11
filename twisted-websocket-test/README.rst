@@ -13,7 +13,7 @@ echo.py
 
 Example of an echo service 
 
-How to run
+How to run::
   
     $ python ./echo.py
 
