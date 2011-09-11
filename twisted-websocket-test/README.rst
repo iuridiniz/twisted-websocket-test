@@ -2,7 +2,7 @@
 Test WebSocket using twisted
 ============================
 
-This project tests a websocket server implementation using twisted
+This project tests a WebSocket server implementation using twisted
 
 Keywords:
 
@@ -16,7 +16,7 @@ Keywords:
 
 * python
 * twisted
-* stomp messsage broker (optional)
+* stomp message broker (optional)
 
 echo.py
 -------
