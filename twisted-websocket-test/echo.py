@@ -17,8 +17,8 @@ def main():
     log.startLogging(sys.stdout)
     echo_ws_factory = WebSocketFactory(echo_factory)
 
+    #reactor.listenTCP(9090, echo_factory)
     reactor.listenTCP(9091, echo_ws_factory)
-    reactor.listenTCP(9090, echo_factory)
     reactor.run()
 
 

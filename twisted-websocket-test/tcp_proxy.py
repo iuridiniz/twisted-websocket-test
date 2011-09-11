@@ -4,21 +4,19 @@ from twisted.internet import reactor
 from twisted.protocols.portforward import ProxyFactory
 from websocket import WebSocketProtocol, WebSocketFactory
 
-
-#HOST, PORT = "e1.acom.evolux.digi.com.br", 61613
+# When web browser connects on WebSocket it will redirect to this host/port
 HOST, PORT = "localhost", 61613
 
 def main():
     log.startLogging(sys.stdout)
     
-    stomp_proxy_factory = ProxyFactory(HOST, PORT)
-    stomp_ws_factory = WebSocketFactory(stomp_proxy_factory)
+    proxy_factory = ProxyFactory(HOST, PORT)
+    ws_factory = WebSocketFactory(proxy_factory)
 
-    reactor.listenTCP(9090, stomp_proxy_factory)
-    reactor.listenTCP(9091, stomp_ws_factory)
+    #reactor.listenTCP(9090, proxy_factory)
+    reactor.listenTCP(9091, ws_factory)
 
     reactor.run()
-
 
 if __name__ == "__main__":
     main()
