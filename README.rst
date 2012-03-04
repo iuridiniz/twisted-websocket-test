@@ -58,11 +58,11 @@ How to use:
 
     Windows::
     
-        > start stomp.html
+        > start tcp_proxy.html
   
     Linux::
     
-        $ xdg-open ./stomp.html
+        $ xdg-open ./tcp_proxy.html
 
 
 websocket.py
