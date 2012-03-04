@@ -18,12 +18,16 @@ def main(root_path=".", port=9091):
     log.startLogging(sys.stdout)
     ################
     # setup webserver
-    if not root_path.startswith("/"):
-        root_path = os.path.join(os.path.dirname(__file__), root_path)
-
-    # serve static files
-    root = static.File(root_path)
-    webserver = WebSocketSite(root)
+    webserver = None
+    if root_path:
+        # serve static files
+        if not root_path.startswith("/"):
+            root_path = os.path.join(os.path.dirname(__file__), root_path)
+        root = static.File(root_path)
+        webserver = WebSocketSite(root)
+    else:
+        # serve no files, only websockets
+        webserver = WebSocketSite(resource.NoResource())
 
     ################
     # setup echo factory
