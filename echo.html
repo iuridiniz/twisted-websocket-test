@@ -4,17 +4,7 @@
   </head>
   <body>
     <h1>WebSocket example: echo service</h1>
-    <script type="text/javascript">
-        var ws = new WebSocket("ws://127.0.0.1:9091/ws/echo");
-        ws.onmessage = function(evt) {
-            var data = evt.data;
-            var target = document.getElementById("received");
-            target.value = target.value + data;
-        };
-        window.send_data = function() {
-            ws.send(document.getElementById("send_input").value);
-        };
-    </script>
+
     <form>
       <label for="send_input">Text to send</label>
       <input type="text" name="send_input" id="send_input"/>
@@ -25,4 +15,19 @@
       <textarea name="received" id="received"></textarea>
     </form>
   </body>
+  <script type="text/javascript">
+    var Socket = window.WebSocket;
+    if ("MozWebSocket" in window) {
+        Socket = MozWebSocket;
+    }
+    var ws = new Socket("ws://127.0.0.1:9091/ws/echo");
+    ws.onmessage = function(evt) {
+        var data = evt.data;
+        var target = document.getElementById("received");
+        target.value = target.value + data;
+    };
+    window.send_data = function() {
+        ws.send(document.getElementById("send_input").value);
+    };
+  </script>
 </html>
