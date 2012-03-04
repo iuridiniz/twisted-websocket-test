@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>WebSocket example: tcp proxy service</title>
+  </head>
+  <body>
+    <h1>WebSocket example: tcp proxy service</h1>
+
+    <form>
+      <label for="send_input">Text to send</label>
+      <textarea name="send_input" id="send_input"></textarea>
+      <input type="submit" name="send_submit" id="send_submit" value="Send"
+             onclick="send_data(); return false"/>
+      <br>
+      <label for="received">Received text</label>
+      <textarea name="received" id="received"></textarea>
+    </form>
+  </body>
+  <script type="text/javascript">
+    document.getElementById("send_input").value = "HEAD / HTTP/1.1\nHOST: www.google.com\n\n";
+    var Socket = window.WebSocket;
+    if ("MozWebSocket" in window) {
+        Socket = MozWebSocket;
+    }
+
+    var ws = new Socket("ws://127.0.0.1:9091/proxy");
+    ws.onmessage = function(evt) {
+        var data = evt.data;
+        var target = document.getElementById("received");
+        target.value = target.value + data;
+    };
+    window.send_data = function() {
+        var text = document.getElementById("send_input").value.replace("\n", "\r\n");
+        ws.send(text);
+    };
+  </script>
+</html>

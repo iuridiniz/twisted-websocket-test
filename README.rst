@@ -10,13 +10,11 @@ Keywords:
 * WebSocket
 * Python
 * Twisted
-* Stomp
 
 **Requirements:**
 
 * python
 * twisted
-* stomp message broker (optional)
 
 echo.py
 -------
@@ -44,15 +42,11 @@ tcp_proxy.py
 --------------
 
 This example just exposes an existing service over WebSocket. 
-*It's necessary to use some implentation of the service protocol over 
-WebSocket*
+*It's necessary to use some implentation in JavaScript of the service protocol 
+over WebSocket*
 
-In this example, it will redirect WebSocket connections to a stomp message 
-broker running on localhost:61613 over WebSocket, but may be any service.
-
-Stomp protocol implementation over WebSocket used in this example is 
-available at https://github.com/jmesnil/stomp-websocket. See more information
-about it at http://jmesnil.net/stomp-websocket/doc/
+In this example, it will redirect WebSocket connections to www.google.com:80 over 
+WebSocket, but may be any service.
 
 How to run::
   
@@ -60,21 +54,17 @@ How to run::
 
 How to use:
   
-    *Make sure that stomp message broker is running on localhost:61613*
-   
-    Open stomp.html on any websocket capable browser (Chrome, Safari, ...)
+    Open tcp_proxy.html on any websocket capable browser (Chrome, Safari, ...)
 
     Windows::
     
-        > start echo.html
+        > start stomp.html
   
     Linux::
     
-        $ xdg-open ./echo.html
+        $ xdg-open ./stomp.html
 
 
 websocket.py
 ------------
-Blind (re)implementation of WebSockets as a standalone wrapper for Twisted
-protocols.
-Got from: http://paste.pocoo.org/show/451569/
+Got from: git://github.com/iuridiniz/txWebSocket.git
